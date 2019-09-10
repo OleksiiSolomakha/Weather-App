@@ -4,9 +4,16 @@ body {
   background-size: cover;
 }
 h1 {
-  font-size: 3em;
-  text-shadow:5px 3px 10px #FF0000;
+  font-size: 2em;
+  text-shadow: 5px 3px 10px #FF0000;
 }
 .container {
-  max-width: 400px;
+  max-width: 300px;
+}
+.icon {
+  position: relative;
+  top: -50px;
+  border-radius: 50%;
+  width: 100px;
+  margin-bottom: -50px;
 }
