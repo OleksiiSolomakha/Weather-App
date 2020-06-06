@@ -6,9 +6,9 @@ const icon = document.querySelector('.icon img');
 
 const updateUI = (data) => {
 
-  // const { town, weather} = data;
   const town = data.town;
   const weather = data.weather;
+  console.log(data)
 
   details.innerHTML = `
     <h5 class="my-3">${town.EnglishName}</h5>
@@ -19,14 +19,12 @@ const updateUI = (data) => {
     </div>
   `;
 
-  // change day/night & icons
-  const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
-  icon.setAttribute('src', iconSrc);
+  const iconUrl = `img/icons/${weather.WeatherIcon}.svg`;
+  icon.setAttribute('src', iconUrl);
 
-  let timeSrc = weather.IsDayTime ? 'img/day.svg' : 'img/night.svg';
-  time.setAttribute('src', timeSrc);
+  let timeUrl = weather.IsDayTime ? 'img/day.svg' : 'img/night.svg';
+  time.setAttribute('src', timeUrl);
 
-  // remove card if present
   if(card.classList.contains('d-none')){
     card.classList.remove('d-none');
   }
@@ -38,7 +36,6 @@ const changeCity = async (city) => {
  const town = await getCity(city);
  const weather = await getWeather(town.Key);
 
-//  return {town, weather};
  return {
    town: town,
    weather: weather
@@ -56,7 +53,6 @@ form.addEventListener('submit', e => {
   .then(data => updateUI(data))
   .catch(err => console.log(err));
 
-  // local storage  
   localStorage.setItem('city', city);
 
 });
@@ -65,4 +61,4 @@ if(localStorage.getItem('city')){
   changeCity(localStorage.getItem('city'))
     .then(data => updateUI(data))
     .catch(err => console.log(err));
-}
+};
