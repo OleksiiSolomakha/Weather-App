@@ -8,7 +8,6 @@ const updateUI = (data) => {
 
   const town = data.town;
   const weather = data.weather;
-  console.log(data)
 
   details.innerHTML = `
     <h5 class="my-3">${town.EnglishName}</h5>
